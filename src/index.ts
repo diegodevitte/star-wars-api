@@ -2,7 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import swaggerUi from 'swagger-ui-express';
 
+import { swaggerSpec } from './swagger.js';
 import peopleRoutes from './routes/people.js';
 import planetsRoutes from './routes/planets.js';
 import starshipsRoutes from './routes/starships.js';
@@ -22,6 +24,12 @@ app.use(morgan('combined'));
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+app.get('/', (req, res) => {
+  res.redirect('/api-docs');
+});
 
 app.use('/people', peopleRoutes);
 app.use('/planets', planetsRoutes);
