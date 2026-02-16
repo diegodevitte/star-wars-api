@@ -10,7 +10,7 @@ const swaggerDefinition: SwaggerDefinition = {
   },
   servers: [
     {
-      url: 'http://localhost:4000',
+      url: 'http://localhost:4000/api',
       description: 'Development server',
     }
   ],
@@ -30,6 +30,10 @@ const swaggerDefinition: SwaggerDefinition = {
     {
       name: 'Vehicles',
       description: 'Endpoints relacionados con vehículos de Star Wars'
+    },
+    {
+      name: 'Chat',
+      description: 'Endpoint de chat conversacional sobre Star Wars'
     }
   ],
   components: {
@@ -243,6 +247,92 @@ const swaggerDefinition: SwaggerDefinition = {
           error: {
             type: 'string',
             description: 'Detalle del error'
+          }
+        }
+      },
+      ChatRequest: {
+        type: 'object',
+        required: ['message'],
+        properties: {
+          message: {
+            type: 'string',
+            description: 'Mensaje de consulta sobre Star Wars',
+            maxLength: 1000,
+            example: '¿Quién es Luke Skywalker?'
+          },
+          sessionId: {
+            type: 'string',
+            description: 'ID de sesión opcional para continuidad conversacional',
+            example: 'session-123'
+          }
+        }
+      },
+      ChatAction: {
+        type: 'object',
+        properties: {
+          tool: {
+            type: 'string',
+            description: 'Herramienta utilizada para obtener la respuesta',
+            example: 'swapi_search'
+          },
+          input: {
+            type: 'object',
+            description: 'Parámetros de entrada utilizados'
+          },
+          outputSummary: {
+            type: 'object',
+            description: 'Resumen del resultado obtenido'
+          }
+        }
+      },
+      ChatSource: {
+        type: 'object',
+        properties: {
+          type: {
+            type: 'string',
+            description: 'Tipo de fuente de datos',
+            enum: ['people', 'planets', 'starships', 'vehicles'],
+            example: 'people'
+          },
+          url: {
+            type: 'string',
+            description: 'URL de la fuente de datos',
+            example: 'https://swapi.dev/api/people/1/'
+          },
+          id: {
+            type: 'string',
+            description: 'ID del recurso',
+            example: '1'
+          },
+          name: {
+            type: 'string',
+            description: 'Nombre del recurso',
+            example: 'Luke Skywalker'
+          }
+        }
+      },
+      ChatResponse: {
+        type: 'object',
+        required: ['reply'],
+        properties: {
+          reply: {
+            type: 'string',
+            description: 'Respuesta generada por el asistente de chat',
+            example: '**Luke Skywalker** es un personaje de Star Wars. Altura: 172cm, Peso: 77kg, Año de nacimiento: 19BBY, Género: male.'
+          },
+          actions: {
+            type: 'array',
+            description: 'Acciones realizadas para generar la respuesta',
+            items: {
+              $ref: '#/components/schemas/ChatAction'
+            }
+          },
+          sources: {
+            type: 'array',
+            description: 'Fuentes de datos utilizadas en la respuesta',
+            items: {
+              $ref: '#/components/schemas/ChatSource'
+            }
           }
         }
       }

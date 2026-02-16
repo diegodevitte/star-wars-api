@@ -9,6 +9,7 @@ import peopleRoutes from './routes/people.js';
 import planetsRoutes from './routes/planets.js';
 import starshipsRoutes from './routes/starships.js';
 import vehiclesRoutes from './routes/vehicles.js';
+import chatRoutes from './routes/chat.js';
 
 
 const app = express();
@@ -31,10 +32,11 @@ app.get('/', (req, res) => {
   res.redirect('/api-docs');
 });
 
-app.use('/people', peopleRoutes);
-app.use('/planets', planetsRoutes);
-app.use('/starships', starshipsRoutes);
-app.use('/vehicles', vehiclesRoutes);
+app.use('/api/people', peopleRoutes);
+app.use('/api/planets', planetsRoutes);
+app.use('/api/starships', starshipsRoutes);
+app.use('/api/vehicles', vehiclesRoutes);
+app.use('/api/chat', chatRoutes);
 
 app.use('*', (req, res) => {
   res.status(404).json({

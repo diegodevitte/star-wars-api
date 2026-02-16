@@ -111,3 +111,44 @@ export interface ApiError {
 }
 
 export type SwapiResource = 'people' | 'planets' | 'starships' | 'vehicles';
+
+// Chat related types
+export interface ChatRequest {
+  message: string;
+  sessionId?: string;
+}
+
+export interface ChatAction {
+  tool: string;
+  input: any;
+  outputSummary?: any;
+}
+
+export interface ChatSource {
+  type: string;
+  url?: string;
+  id?: string;
+  name?: string;
+}
+
+export interface ChatResponse {
+  reply: string;
+  actions?: ChatAction[];
+  sources?: ChatSource[];
+}
+
+export type LLMProvider = 'openai' | 'anthropic' | 'none';
+
+export type IntentType = 'people' | 'planets' | 'starships' | 'vehicles' | 'unknown';
+
+export interface LLMGenerateOptions {
+  prompt: string;
+  maxTokens?: number;
+  temperature?: number;
+}
+
+export interface ParsedIntent {
+  intent: IntentType;
+  query: string;
+  confidence: number;
+}
