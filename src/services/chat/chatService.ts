@@ -104,6 +104,9 @@ Responde de forma natural y amigable en español.`;
       const peopleResult = await getPeople('1', query);
       if (peopleResult.results.length > 0) {
         const person = peopleResult.results[0];
+        if (!person) {
+          return { reply: 'Error al obtener información.' };
+        }
         actions.push({
           tool: 'swapi_search',
           input: { resource: 'people', query },
@@ -127,6 +130,9 @@ Responde de forma natural y amigable en español.`;
       const planetsResult = await getPlanets('1', query);
       if (planetsResult.results.length > 0) {
         const planet = planetsResult.results[0];
+        if (!planet) {
+          return { reply: 'Error al obtener información.' };
+        }
         actions.push({
           tool: 'swapi_search',
           input: { resource: 'planets', query },
@@ -150,6 +156,9 @@ Responde de forma natural y amigable en español.`;
       const starshipsResult = await getStarships('1', query);
       if (starshipsResult.results.length > 0) {
         const starship = starshipsResult.results[0];
+        if (!starship) {
+          return { reply: 'Error al obtener información.' };
+        }
         actions.push({
           tool: 'swapi_search',
           input: { resource: 'starships', query },
@@ -173,6 +182,9 @@ Responde de forma natural y amigable en español.`;
       const vehiclesResult = await getVehicles('1', query);
       if (vehiclesResult.results.length > 0) {
         const vehicle = vehiclesResult.results[0];
+        if (!vehicle) {
+          return { reply: 'Error al obtener información.' };
+        }
         actions.push({
           tool: 'swapi_search',
           input: { resource: 'vehicles', query },
@@ -219,6 +231,9 @@ Responde de forma natural y amigable en español.`;
           }
           if (result.results.length === 1) {
             const person = result.results[0];
+            if (!person) {
+              return { reply: 'Error al obtener información.' };
+            }
             actions.push({
               tool: 'swapi_search',
               input: { resource: 'people', query },
@@ -255,6 +270,9 @@ Responde de forma natural y amigable en español.`;
           }
           if (result.results.length === 1) {
             const planet = result.results[0];
+            if (!planet) {
+              return { reply: 'Error al obtener información.' };
+            }
             actions.push({
               tool: 'swapi_search',
               input: { resource: 'planets', query },
@@ -291,6 +309,9 @@ Responde de forma natural y amigable en español.`;
           }
           if (result.results.length === 1) {
             const starship = result.results[0];
+            if (!starship) {
+              return { reply: 'Error al obtener información.' };
+            }
             actions.push({
               tool: 'swapi_search',
               input: { resource: 'starships', query },
@@ -327,6 +348,9 @@ Responde de forma natural y amigable en español.`;
           }
           if (result.results.length === 1) {
             const vehicle = result.results[0];
+            if (!vehicle) {
+              return { reply: 'Error al obtener información.' };
+            }
             actions.push({
               tool: 'swapi_search',
               input: { resource: 'vehicles', query },

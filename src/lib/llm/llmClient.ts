@@ -67,7 +67,7 @@ export class OpenAIClient implements LLMClient {
         return null;
       }
 
-      const data = await response.json();
+      const data = await response.json() as any;
       return data.choices?.[0]?.message?.content || null;
     } catch (error) {
       console.error('OpenAI client error:', error);
@@ -119,7 +119,7 @@ export class AnthropicClient implements LLMClient {
         return null;
       }
 
-      const data = await response.json();
+      const data = await response.json() as any;
       return data.content?.[0]?.text || null;
     } catch (error) {
       console.error('Anthropic client error:', error);
