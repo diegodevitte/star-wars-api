@@ -10,6 +10,7 @@ import planetsRoutes from './routes/planets.js';
 import starshipsRoutes from './routes/starships.js';
 import vehiclesRoutes from './routes/vehicles.js';
 import chatRoutes from './routes/chat.js';
+import statsRoutes from './routes/stats.js';
 
 
 const app = express();
@@ -37,6 +38,7 @@ app.use('/api/planets', planetsRoutes);
 app.use('/api/starships', starshipsRoutes);
 app.use('/api/vehicles', vehiclesRoutes);
 app.use('/api/chat', chatRoutes);
+app.use('/api/stats', statsRoutes);
 
 app.use('*', (req, res) => {
   res.status(404).json({
