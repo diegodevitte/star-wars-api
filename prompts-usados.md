@@ -123,3 +123,175 @@ CRITERIOS DE ACEPTACIÓN
 - No rompe rutas existentes.
 
 Ahora: implementa TODO lo anterior, generando el código necesario en esos archivos y actualizando los index.ts correspondientes.
+
+//Pedir a copilot que genere la documentacion leyendo todo el repositorio
+Necesito que generes un README.md completo y profesional para este proyecto llamado "star-wars-api".
+
+Contexto:
+Este backend fue desarrollado para el challenge técnico de Coderhouse. Es una API REST que consume datos de SWAPI (https://swapi.dev/) y expone endpoints propios optimizados para frontend.
+
+Stack:
+
+- Node.js
+- Express (si detectas otro framework, ajusta automáticamente)
+- TypeScript
+- Arquitectura modular
+- Variables de entorno para configuración
+- Preparado para integración futura con LLM (OpenAI) en endpoint /chat
+
+Objetivo del README:
+Debe estar orientado a evaluación técnica. No quiero un README básico. Quiero documentación clara, estructurada y profesional que demuestre buenas prácticas de backend.
+
+Estructura obligatoria:
+
+# Star Wars API
+
+## Overview
+
+Breve descripción del proyecto, propósito y contexto del challenge.
+
+## Architecture
+
+Explicar:
+
+- Estructura de carpetas
+- Separación de responsabilidades (routes, controllers, services)
+- Flujo de request
+- Manejo de errores
+- Uso de variables de entorno
+- Diseño RESTful
+
+## Getting Started
+
+### Prerequisites
+
+- Node version requerida
+- npm / pnpm
+
+### Installation
+
+Instrucciones paso a paso:
+
+- clone
+- install
+- configurar .env
+- run dev
+- run build (si aplica)
+
+### Environment Variables
+
+Tabla con:
+
+- PORT
+- SWAPI_BASE_URL
+- LLM_PROVIDER
+- LLM_API_KEY
+- LLM_MODEL
+
+Explicar cuáles son opcionales.
+
+## API Endpoints
+
+Documentar detalladamente cada grupo:
+
+### People
+
+GET /people
+
+- Query params:
+  - page
+  - search
+- Ejemplo request
+- Ejemplo response JSON
+
+GET /people/:id
+
+### Planets
+
+GET /planets
+GET /planets/:id
+
+### Starships
+
+GET /starships
+GET /starships/:id
+
+### Vehicles
+
+GET /vehicles
+GET /vehicles/:id
+
+Para cada endpoint:
+
+- Descripción
+- Query params
+- Response structure
+- Status codes
+- Manejo de errores
+
+## AI Chat
+
+Documentar el endpoint:
+
+POST /chat
+
+Body:
+{
+"message": "string",
+"context": "star-wars-universe"
+}
+
+Explicar:
+
+- Cómo funciona internamente
+- Cómo se integra con OpenAI
+- Qué sucede si no hay API key
+- Cómo está preparado para multi-provider
+
+## Testing Strategy
+
+Si no hay tests implementados, explicar:
+
+- Qué partes serían críticas de testear
+- Qué tipo de tests aplicarías (unit, integration)
+- Cómo se podría integrar Jest o Vitest
+
+## Error Handling
+
+Explicar:
+
+- Middleware global de errores
+- Formato estándar de error JSON
+- HTTP status codes utilizados
+
+## Deployment
+
+Explicar cómo desplegar en:
+
+- Railway / Render / Docker (si aplica)
+- Variables necesarias en producción
+
+## Performance & Improvements
+
+Breve sección explicando:
+
+- Posibles mejoras
+- Caching
+- Rate limiting
+- Validación con Zod o Joi
+- Logging estructurado
+
+## License
+
+MIT (o la que corresponda)
+
+Requisitos adicionales:
+
+- Usa markdown profesional
+- Incluye tablas donde aporte claridad
+- Incluye ejemplos de JSON reales basados en los controllers existentes
+- No inventes endpoints que no existan
+- Mantén tono profesional, técnico y conciso
+- El README debe parecer de un desarrollador senior
+
+Genera el contenido completo del README.md listo para pegar.
